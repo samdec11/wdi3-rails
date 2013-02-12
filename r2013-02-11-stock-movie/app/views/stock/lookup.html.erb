@@ -1,0 +1,6 @@
+<form action='../stock/lookup' method='get'>
+    <input name='sym'>
+    <button>Fetch</button>
+  </form>
+
+<h1><%= "#{params['sym'].upcase} is trading at #{number_to_currency(@result)}" %></h1>

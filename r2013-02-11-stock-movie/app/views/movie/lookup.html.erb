@@ -1,0 +1,19 @@
+<form action='../movie/lookup' method='get'>
+  <input name='title'>
+  <button>Fetch</button>
+</form>
+<header><%= @mhash['Title'] %></header>
+<section>
+  <img src="<%= @mhash['Poster'] %>">
+</section>
+<section>
+  <ul>
+    <li><%= @mhash['Year'] %></li>
+    <li><%= @mhash['Rated'] %></li>
+    <li><%= @mhash['Genre'] %></li>
+    <li><%= @mhash['Director'] %></li>
+    <li><%= @mhash['Writer'] %></li>
+    <li><%= @mhash['Actors'] %></li>
+    <li><%= @mhash['Plot'] %></li>
+  </ul>
+</section>
