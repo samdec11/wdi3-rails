@@ -1,0 +1,10 @@
+<%= image_tag @painting.image, :class => 'show' %>
+<ul>
+  <li><%= @painting.title %></li>
+  <li><%= @painting.year %></li>
+  <li><%= @painting.medium %></li>
+  <li><%= @painting.style %></li>
+</ul>
+
+<%= link_to 'Delete', @painting, :method => :delete, :confirm => 'Okay to delete?' %>
+<%= link_to 'Edit', edit_painting_path(@painting) %>

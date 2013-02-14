@@ -1,0 +1,14 @@
+<% @authors.each do |author| %>
+  <div class='wrap'>
+  <%= link_to image_tag(author.image, :class => 'index'), author %>
+  <ul>
+    <li><%= author.name %></li>
+    <li><%= author.dob.strftime("Born %b %d, %Y") %></li>
+    <li><%= author.place_of_birth %></li>
+    <% if author.dod != nil %>
+    <li><%= author.dod.strftime("Died %b %d, %Y") %></li>
+    <li><%= author.place_of_death %></li>
+    <% end %>
+  </ul>
+  </div>
+<% end %>

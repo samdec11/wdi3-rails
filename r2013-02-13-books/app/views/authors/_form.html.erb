@@ -1,0 +1,15 @@
+<%= form_for @author do |f| %>
+  <%= f.text_field :name %>
+  <%= f.label :name %><br>
+  <%= f.text_field :dob %>
+  <%= f.label :dob, 'Date of birth' %><br>
+  <%= f.text_field :place_of_birth %>
+  <%= f.label :place_of_birth %><br>
+  <%= f.text_field :dod %>
+  <%= f.label :dod, 'Date of death' %><br>
+  <%= f.text_field :place_of_death %>
+  <%= f.label :place_of_death %><br>
+  <%= f.text_field :image %>
+  <%= f.label :image %><br>
+  <%= f.submit %>
+<% end %>

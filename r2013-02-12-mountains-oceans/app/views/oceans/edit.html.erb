@@ -1,0 +1,15 @@
+<form action='<%= oceans_path(@ocean.id) %>' method='post'>
+  <label for='name'>Name</label>
+  <input value ='<%= @ocean.name %>' type='text' name='ocean[name]'>
+  <label for='image'>Image</label>
+  <input value ='<%= @ocean.image %>'type='text' name='ocean[image]'>
+  <label for='area'>Area</label>
+  <input value ='<%= @ocean.area %>' type='text' name='ocean[area]'>
+  <label for='volume'>Volume</label>
+  <input value ='<%= @ocean.volume %>' type='text' name='ocean[volume]'>
+  <label for='max_depth'>Maximum Depth</label>
+  <input value ='<%= @ocean.max_depth %>' type='text' name='ocean[max_depth]'>
+  <label for='max_width'>Maximum Width</label>
+  <input value ='<%= @ocean.max_width %>' type='text' name='ocean[max_width]'>
+  <button>Add</button>
+</form>

@@ -1,0 +1,11 @@
+<% @books.each do |book| %>
+  <div class='wrap'>
+  <%= link_to image_tag(book.image, :class => 'index'), book %>
+  <ul>
+    <li><%= book.title %></li>
+    <li><%= book.author.name %></li>
+    <li><%= book.year %></li>
+    <li><%= book.genre %></li>
+  </ul>
+  </div>
+<% end %>

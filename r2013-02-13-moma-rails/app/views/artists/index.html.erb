@@ -1,0 +1,11 @@
+<% @artists.each do |artist| %>
+  <div class='container'>
+      <%= image_tag(artist.image, :class => 'index') %>
+    <ul>
+      <li><%= link_to artist.name, artist %></li>
+      <li><%= artist.nationality %></li>
+      <li><%= artist.dob %></li>
+      <li><%= artist.period %></li>
+    </ul>
+  </div>
+<% end %>

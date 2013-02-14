@@ -1,0 +1,14 @@
+<section>
+<%= image_tag @book.image, :class => 'show' %>
+<ul>
+  <li><%= @book.title %></li>
+  <li><%=link_to @book.author.name, author_path(@book.author_id) %></li>
+  <li><%= @book.year %></li>
+  <li><%= @book.genre %></li>
+</ul>
+</section>
+
+<div class='links'>
+<%= link_to 'Delete', @book, :method => :delete, :confirm => 'Okay to delete?' %>
+<%= link_to 'Edit', edit_book_path(@book) %>
+</div>

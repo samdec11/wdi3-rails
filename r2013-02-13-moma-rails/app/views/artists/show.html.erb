@@ -1,0 +1,20 @@
+<%= image_tag @artist.image, :class => 'show' %>
+<ul>
+  <li><%= @artist.name %></li>
+  <li><%= @artist.nationality %></li>
+  <li><%= @artist.dob %></li>
+  <li><%= @artist.period %></li>
+</ul>
+
+<% @artist.paintings.each do |painting| %>
+<ul>
+  <li><%= link_to painting.title, painting %></li>
+  <li><%= painting.year %></li>
+  <li><%= painting.medium %></li>
+  <li><%= painting.style %></li>
+  <li><%= image_tag(painting.image, :class =>'index') %></li>
+</ul>
+<% end %>
+
+<%= link_to 'Delete', @artist, :method => :delete, :confirm => 'Okay to delete?' %>
+<%= link_to 'Edit', edit_artist_path(@artist) %>

@@ -1,0 +1,12 @@
+<% @oceans.each do |ocean| %>
+  <ul>
+    <li>Name: <%= ocean.name %> Ocean</li>
+    <li>Area: <%= ocean.area %></li>
+    <li>Volume: <%= ocean.volume %></li>
+    <li>Max Depth: <%=  ocean.max_depth %></li>
+    <li>Max Width: <%= ocean.max_width %></li>
+  </ul>
+  <%= image_tag(ocean.image) %>
+  <%= button_to('Delete', oceans_delete_path(ocean.id)) %>
+  <%= link_to('Edit', oceans_edit_path(ocean.id)) %>
+<% end %>

@@ -1,0 +1,76 @@
+@import url(http://fonts.googleapis.com/css?family=Petit+Formal+Script);
+@import url(http://fonts.googleapis.com/css?family=Clicker+Script);
+
+body {
+  font-family: 'Petit Formal Script', cursive;
+}
+
+div#body {
+  position: absolute;
+  top: 80px;
+}
+
+nav {
+  clear: both;
+  position: absolute;
+  top: 0px;
+}
+nav ul {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+nav li {
+  display: inline;
+}
+
+nav a {
+  font-size: 20px;
+  text-decoration: none;
+  color: #000;
+}
+
+nav a:hover {
+  color: purple;
+  font-family: 'Clicker Script', cursive;
+  font-size: 30px;
+}
+
+nav span {
+  color: red;
+  font-size: 25px;
+}
+
+.index {
+  height: 200px;
+  width: 200px;
+  border: 1px solid black;
+  float: left;
+  margin-bottom: 10px;
+}
+
+.show {
+  height: 500px;
+  width: 500px;
+  clear: both;
+  float: left;
+}
+.container ul {
+  display: inline;
+}
+ul {
+  float: left;
+}
+
+ul li {
+  list-style: none;
+}
+
+div.images {
+  float: left;
+
+}
+
+div.container {
+  clear: both;
+}

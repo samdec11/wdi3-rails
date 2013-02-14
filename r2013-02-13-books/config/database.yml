@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: r2013-02-13-books_development
+  pool: 5
+  username: Sean
+  password:
