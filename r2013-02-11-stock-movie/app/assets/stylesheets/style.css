@@ -56,6 +56,11 @@ nav a:hover {
   font-weight: bold;
 }
 
+.image {
+  float: left;
+  margin-right: 20px;
+}
+
 section {
   opacity: 1.0;
 }
