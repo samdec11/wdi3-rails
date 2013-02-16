@@ -1,0 +1,12 @@
+<ol>
+<% @books.each do |book| %>
+<%= image_tag book.image, :class => 'b_index'  %>
+  <li>
+    <ul>
+      <li><%= link_to book.title, book %></li>
+      <li><%= book.cuisine %></li>
+      <li><%= book.chef %></li>
+    </ul>
+  </li>
+<% end %>
+</ol>

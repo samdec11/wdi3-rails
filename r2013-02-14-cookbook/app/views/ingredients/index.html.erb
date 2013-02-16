@@ -1,0 +1,12 @@
+<ol>
+<% @ingredients.each do |ingredient| %>
+<%= image_tag ingredient.image, :class => 'index'  %>
+  <li>
+    <ul>
+      <li><%= link_to ingredient.name, ingredient %></li>
+      <li><%= ingredient.measurement %></li>
+      <li><%= ingredient.cost %></li>
+    </ul>
+  </li>
+<% end %>
+</ol>

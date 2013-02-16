@@ -1,0 +1,10 @@
+<div class='show'>
+  <%= link_to @ingredient.name, @ingredient %>
+  <%= @ingredient.measurement %>
+  <%= @ingredient.cost %>
+  <%= image_tag(@ingredient.image, :class =>'show') %>
+</div>
+<div class='links'>
+<%= link_to 'Delete', @ingredient, :method => :delete, :confirm => 'Okay to delete?' %>
+<%= link_to 'Edit', edit_ingredient_path(@ingredient) %>
+</div>

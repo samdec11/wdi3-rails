@@ -1,0 +1,30 @@
+<div class='show'>
+  <%= link_to @book.title, @book %>
+  <%= @book.cuisine %>
+  <%= @book.chef %>
+  <%= image_tag(@book.image, :class =>'b_show') %>
+</div>
+
+<div class='attributes'>
+  <div class='recipes'>
+  <% @book.recipes.each do |recipe| %>
+  <div class='recipe'>
+    <p><%= recipe.name %></p>
+    <%= image_tag recipe.image, :class => 'thumbnail' %>
+
+  <div class='ingredients'>
+  <% recipe.ingredients.each do |ingredient| %>
+      <div class='ingredient'>
+      <p><%= ingredient.name %></p>
+      <%= image_tag ingredient.image, :class => 'thumbnail' %>
+    </div>
+  <% end %>
+  </div>
+  </div>
+  <% end %>
+  </div>
+</div><!-- /attributes -->
+<div class='links'>
+<%= link_to 'Delete', @book, :method => :delete, :confirm => 'Okay to delete?' %>
+<%= link_to 'Edit', edit_book_path(@book) %>
+</div>

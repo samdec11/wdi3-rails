@@ -1,0 +1,14 @@
+<ol>
+<% @recipes.each do |recipe| %>
+<%= image_tag recipe.image, :class => 'index'  %>
+  <li>
+    <ul>
+      <li><%= link_to recipe.name, recipe %></li>
+      <li><%= recipe.course %></li>
+      <li><%= recipe.cooktime %></li>
+      <li><%= recipe.servingsize %></li>
+      <li><%= recipe.instructions %></li>
+    </ul>
+  </li>
+<% end %>
+</ol>

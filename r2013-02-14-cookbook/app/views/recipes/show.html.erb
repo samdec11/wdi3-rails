@@ -1,0 +1,12 @@
+<div class='show'>
+  <%= link_to @recipe.name, @recipe %>
+  <%= @recipe.course %>
+  <%= @recipe.cooktime %>
+  <%= @recipe.servingsize %>
+  <%= @recipe.instructions %>
+  <%= image_tag(@recipe.image, :class =>'show') %>
+</div>
+<div class='links'>
+<%= link_to 'Delete', @recipe, :method => :delete, :confirm => 'Okay to delete?' %>
+<%= link_to 'Edit', edit_recipe_path(@recipe) %>
+</div>
