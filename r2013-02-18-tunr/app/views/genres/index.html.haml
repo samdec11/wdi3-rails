@@ -1,0 +1,10 @@
+.row
+  .three.columns
+    = button_to('Add New', new_genre_path, :method=>:get, :class => 'button radius') if @auth.present? && @auth.is_admin
+    %ul.lists
+      - @genres.each do |genre|
+        %li
+          = genre.name
+          - if @auth.present?
+            = link_to 'Edit', edit_genre_path(genre) if @auth.is_admin
+  .nine.columns

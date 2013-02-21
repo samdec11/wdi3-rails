@@ -1,0 +1,12 @@
+.row
+  .four.columns
+    = button_to('Add New', new_artist_path, :method=>:get, :class => 'button radius') if @auth.present? && @auth.is_admin
+    %ul.lists
+      - @albums.each do |album|
+        %li
+          = album.name
+          - if @auth.present?
+            = link_to 'Edit', edit_album_path(album) if @auth.is_admin
+        %li
+          = image_tag album.image
+  .eight.columns

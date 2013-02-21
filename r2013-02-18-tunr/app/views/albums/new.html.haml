@@ -1,0 +1,10 @@
+.row
+  .five.columns
+    %h1 Album
+    = form_for @album do |f|
+      = f.label :name
+      = f.text_field :name, :autofocus => true
+      = f.label :image
+      = f.text_field :image
+      = f.submit nil, :class => 'button radius'
+  .seven.columns
