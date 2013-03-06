@@ -1,0 +1,58 @@
+%script
+  var tasks = [];
+.row
+  .twelve.columns
+    %h1= "#{@auth.name}'s Tasks"
+.row
+  .six.columns
+    #map_canvas
+    %script
+      display_map(40.7316, -73.9901, 13);
+  .six.columns
+    .controls
+      .new
+        = button_tag 'New Task', :id => 'new_task', :class => 'button radius success tiny'
+      .form.hide
+        = form_tag do
+          = label_tag 'title'
+          = text_field_tag 'title'
+          = label_tag 'description'
+          = text_area_tag 'description'
+          = label_tag 'duedate', 'Due Date'
+          = text_field_tag 'duedate'
+          = label_tag 'address'
+          = text_area_tag 'address'
+          = label_tag 'priority'
+          = select_tag 'priority', options_from_collection_for_select(@auth.priorities.order(:value).reverse, 'id', 'name')
+          = hidden_field_tag 'task_id'
+          = link_to('Cancel', '#', :id=>'cancel_task', :class => 'button radius tiny alert')
+          = submit_tag 'Create New Task', :id => 'create_task', :class => 'button radius tiny'
+          = submit_tag 'Edit Task', :id => 'update_task', :class => 'button radius success tiny'
+.row
+  .twelve.columns
+    %table#task_table
+      %tr
+        %th Title
+        %th Description
+        %th Due Date
+        %th Complete?
+        %th Address
+        %th Edit
+        %th Delete
+      - @tasks.each do |task|
+        %tr.task_row
+          %script
+            = "tasks.push({id:#{task.id}, title:'#{task.title.gsub("'", "")}', description:'#{task.description.gsub("'", "")}', duedate:'#{task.duedate}', is_complete:'#{task.is_complete}', address:'#{task.address.gsub("'", "")}', priority_id:'#{task.priority.id}', priority_color:'#{task.priority.color}', priority_value:'#{task.priority.value}'});"
+          %script
+            = "add_marker(#{task.latitude}, #{task.longitude}, '#{task.title}');"
+          %td.title= task.title
+          %td.description= task.description
+          %td.duedate= task.duedate
+          %td.complete= task.is_complete
+          %td.address= task.address
+          %td= button_tag 'Edit', :class => 'button radius success tiny edit'
+          %td= button_tag 'Delete', :class => 'button radius alert tiny delete', :confirm => 'Are you sure?'
+          %td.hide.task_id= task.id
+          %td.hide.priority_color= task.priority.color
+          %td.hide.priority_id= task.priority.id
+          %td.hide.priority_value= task.priority.value

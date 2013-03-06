@@ -20,4 +20,13 @@ class User < ActiveRecord::Base
   validates :image, :presence => true
   validates :name, :uniqueness => true, :length => { :minimum => 2 }
   validates :balance, :numericality => { :greater_than_or_equal_to => 0}
+  def mixtape_songs
+    mixtapes.flat_map(&:songs).uniq
+  end
+  def album_songs
+    albums.flat_map(&:songs).uniq
+  end
+  def songs
+    (mixtape_songs + album_songs).uniq
+  end
 end

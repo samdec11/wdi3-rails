@@ -1,0 +1,30 @@
+.row
+  .twelve.columns
+    %h2
+      = @mixtape.name
+    %table
+      %tr
+        %th Song
+        %th Album
+        %th Artist
+        %th Genre
+        %th Play
+        %th Refund
+      - @mixtape.songs.each do |song|
+        %tr
+          %td= song.name
+          %td= link_to song.album.name, album_path(song.album)
+          %td= link_to song.album.artists.first.name, artist_path(song.album.artists.first)
+          %td= link_to song.genres.first.name, genre_path(song.genres.first)
+          %td= render :partial => 'songs/listen', :locals => {:filename => song.filename}
+          %td
+            %a{:href=>"#", :class=>"button radial tiny", :"data-reveal-id"=> "song_#{song.id}"} Refund
+          .reveal-modal[song]
+            = form_for song, :method=>:put, :url=>refund_song_path(song) do |f|
+              %h2= "Refund #{song.name}?"
+              %p= "Songs may be refunded at 70% of the purchase price. Your balance of #{number_to_currency(@auth.balance)} will increase to #{number_to_currency(@auth.balance + (song.cost * 0.7))}"
+              %br
+              %br
+              = f.submit "Refund", :class=>"button radial", :method=>:put
+            %a.close-reveal-modal &#215;
+    = link_to 'Back to Mixtapes', mixtapes_path

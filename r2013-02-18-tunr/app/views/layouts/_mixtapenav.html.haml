@@ -1,0 +1,9 @@
+%li.has-flyout
+  = link_to('Mixtapes', mixtapes_path)
+  %a.flyout-toggle
+    %span
+  %ul.flyout
+    %li
+      = link_to('Create New', new_mixtape_path)
+      - @auth.mixtapes.each do |mixtape|
+        %li= link_to(mixtape.name, mixtape)

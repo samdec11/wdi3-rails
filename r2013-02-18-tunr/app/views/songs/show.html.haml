@@ -1,0 +1,36 @@
+.row
+  .twelve.columns
+    %h2
+      = @song.name
+      = link_to('Edit', edit_song_path) if is_admin
+    - if is_admin || @song.in?(@auth.mixtapes.flat_map(&:songs))
+      = render :partial => 'listen', :locals => {:filename => @song.filename}
+    %ul.lists
+      %li
+        = "Genre: "
+        - @song.genres.each do |genre|
+          = link_to genre.name, genre
+      %li
+        = "Artist: "
+        = link_to @song.album.artists.first.name, artist_path(@song.album.artists.first.id) if @song.album.artists.present?
+      - if @song.album.present?
+        %li
+          = "Album: "
+          = link_to @song.album.name, album_path(@song.album.id)
+        - if is_admin == false && @song.in?(@auth.mixtapes.flat_map(&:songs)) == false
+          - if @auth.balance >= @song.cost
+            %a{:href=>"#", :class=>"button radial", :"data-reveal-id"=>"myModal"}= "Purchase #{number_to_currency(@song.cost)}"
+          - else
+            %button{:disabled=>true, :class=>"alert button"}Insufficient funds
+    = link_to 'Back to Songs', songs_path
+#myModal.reveal-modal
+  = form_for @song, :method=>:put, :url=>purchase_song_path do |f|
+    %h2= "Purchase #{@song.name}"
+    %p Add to mixtape(s):
+    - @auth.mixtapes.order(:name).each do |mixtape|
+      = check_box_tag 'song[mixtape_ids][]', mixtape.id, mixtape.in?(@song.mixtapes.to_a)
+      %span= mixtape.name
+    %br
+    %br
+    = f.submit "Purchase!", :class=>"button radial", :method=>:put
+  %a.close-reveal-modal &#215;

@@ -1,10 +1,15 @@
 .row
   .five.columns
+    = render(:partial => 'shared/errors', :locals => {:object => @artist})
     %h1 Artist
     = form_for @artist do |f|
       = f.label :name
       = f.text_field :name, :autofocus => true
       = f.label :image
       = f.text_field :image
+      - Album.order(:name). each do |album|
+        = check_box_tag 'artist[album_ids][]', album.id, album.in?(@artist.albums.to_a)
+        %span= album.name
+        %br
       = f.submit nil, :class => 'button radius'
   .seven.columns

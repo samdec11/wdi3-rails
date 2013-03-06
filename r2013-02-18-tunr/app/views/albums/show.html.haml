@@ -1,0 +1,33 @@
+.row
+  .twelve.columns
+    %h2
+      = @album.name
+      - if @album.in?(@auth.albums) == false
+        %a{:href=>"#", :class=>"button radial", :"data-reveal-id"=>"myModal"}= "Purchase"
+      = link_to('Edit', edit_album_path(@album)) if is_admin
+    = image_tag @album.image, :class => 'albumshow'
+    %ul.lists
+      %li
+        = "Artist: "
+        -if @album.artists.present?
+          =link_to(@album.artists.first.name, artist_path(@album.artists.first.id))
+    %table
+      %tr
+        %th Songs
+        - if is_admin || @album.in?(@auth.albums)
+          %th Play
+      - @album.songs.each do |song|
+        -if song.name != nil
+          %tr
+            %td= link_to(song.name, song)
+            - if is_admin || @album.in?(@auth.albums)
+              %td= render :partial => 'songs/listen', :locals => {:filename => song.filename}
+    = link_to 'Back to Albums', albums_path
+#myModal.reveal-modal
+  = form_for @album, :method=>:put, :url=>purchase_album_path do |f|
+    %h2= "Purchase #{@album.name} for #{number_to_currency(@album.cost(@auth.songs))}"
+    %p= "#{number_to_currency(@auth.balance)} - #{number_to_currency(@album.cost(@auth.songs))} = #{number_to_currency(@auth.balance - @album.cost(@auth.songs))}"
+    %br
+    %br
+    = f.submit "Purchase!", :class=>"button radial", :method=>:put
+  %a.close-reveal-modal &#215;

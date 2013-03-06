@@ -1,0 +1,9 @@
+.row
+  .three.columns
+    = button_to('Add New', new_mixtape_path, :method=>:get, :class => 'button radius')
+    %table
+      - @mixtapes.each do |mixtape|
+        %tr
+          %td= link_to mixtape.name, mixtape
+          %td= link_to 'Edit', edit_mixtape_path(mixtape)
+  .nine.columns

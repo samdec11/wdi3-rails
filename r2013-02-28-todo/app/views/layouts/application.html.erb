@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+
+<title>DO IT!</title>
+  <%= stylesheet_link_tag "application", :media=>"all" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE']}&sensor=false" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <div class="row">
+
+    <div class="nine columns">
+      <ul class="nav-bar left">
+        <li class = 'active'><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Create User', new_user_path %></li>
+        <li><%= link_to 'Show Users', users_path %></li>
+        <% if @auth == nil %>
+          <li><%= link_to 'Login', login_path %></li>
+        <% else %>
+          <li><%= link_to 'Tasks', tasks_path %></li>
+          <li><%= link_to 'Priorities', priorities_path %></li>
+          <li><%= link_to @auth.name, login_path, :method => :delete %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="three columns"></div>
+  </div>
+
+  <%= yield %>
+  <footer class="row">
+    <div class="twelve columns">
+      <hr />
+      <div class="row">
+        <div class="six columns">
+          <p>&copy; SMM</p>
+        </div>
+        <div class="six columns">
+          <ul class="link-list right">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+            <li><a href="#">Link 5</a></li>
+            <li><a href="#">Link 6</a></li>
+            <li><a href="#">Link 7</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,120 @@
+@import url(http://fonts.googleapis.com/css?family=Fredericka+the+Great);
+
+body {
+  background-color: #999966;
+  margin: 0;
+}
+
+.color_boxes {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin: 20px 20px 20px 0;
+  border: 1px solid black;
+  border-radius: 100%;
+}
+
+h1 {
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 50px;
+  -webkit-margin-before: 0;
+  padding-top: 5px;
+}
+
+#p {
+  color: red;
+  border-bottom: 5px solid black;
+  border-top: 5px solid black;
+  border-left: 5px solid black;
+  background-color: #999966;
+}
+
+#a {
+  color: orange;
+  border-bottom: 5px solid black;
+  border-top: 5px solid black;
+  background-color: #999966;
+}
+
+#i {
+  color: yellow;
+  border-bottom: 5px solid black;
+  border-top: 5px solid black;
+  background-color: #999966;
+}
+
+#n {
+  color: green;
+  border-bottom: 5px solid black;
+  border-top: 5px solid black;
+  background-color: #999966;
+}
+
+#t {
+  color: blue;
+  border-bottom: 5px solid black;
+  border-top: 5px solid black;
+  background-color: #999966;
+}
+
+#r {
+  color: purple;
+  border-bottom: 5px solid black;
+  border-top: 5px solid black;
+  border-right: 5px solid black;
+  background-color: #999966;
+}
+
+button {
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 20px;
+}
+
+#selected {
+  width: 50px;
+  height: 50px;
+  border: 1px dotted black;
+}
+
+.clear {
+  clear: both;
+}
+
+.paint {
+  width: 5px;
+  height: 5px;
+  float: left;
+}
+
+input {
+  font-family: "Fredericka the Great", cursive;
+  font-size: 18px;
+  height: 20px;
+}
+
+#wrapper {
+  width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 0 20px;
+  min-height: 100%;
+}
+
+#canvas {
+  overflow: auto;
+  width: 700px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#colors {
+  height: 92px;
+}
+
+.thumbnail {
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  float: left;
+  margin-right: 20px;
+}

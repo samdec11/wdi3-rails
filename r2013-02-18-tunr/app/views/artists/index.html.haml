@@ -1,12 +1,10 @@
 .row
   .four.columns
-    = button_to('Add New', new_artist_path, :method=>:get, :class => 'button radius') if @auth.present? && @auth.is_admin
-    %ul.lists
+    = button_to('Add New', new_artist_path, :method=>:get, :class => 'button radius') if is_admin
+    %table
       - @artists.each do |artist|
-        %li
-          = artist.name
-          - if @auth.present?
-            = link_to 'Edit', edit_artist_path(artist) if @auth.is_admin
-        %li
-          = image_tag artist.image
-  .eight.columns
+        %tr
+          %td= image_tag artist.image
+          %td= link_to artist.name, artist
+          - if is_admin
+            %td= link_to 'Edit', edit_artist_path(artist)

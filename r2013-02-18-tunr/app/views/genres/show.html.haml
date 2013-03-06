@@ -1,0 +1,11 @@
+.row
+  .twelve.columns
+    %h2
+      = @genre.name
+      = link_to('Edit', edit_genre_path) if is_admin
+    %ul.lists
+      %li
+        = "Songs: "
+        - @genre.songs.order(:name).each do |song|
+          %ul
+            %li= link_to(song.name, song) + " by " + link_to(song.album.artists.first.name, artist_path(song.album.artists.first.id))

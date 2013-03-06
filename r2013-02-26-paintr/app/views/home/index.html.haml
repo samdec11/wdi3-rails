@@ -1,0 +1,17 @@
+#wrapper
+  %h1
+    <span id='p'>P</span><span id='a'>a</span><span id='i'>i</span><span id='n'>n</span><span id='t'>t</span><span id='r'>r</span>
+  #selected
+  .clear
+  = text_field_tag 'color'
+  = button_tag 'add color', :id => 'add_color'
+  = button_tag 'clear colors', :id => 'clear'
+  .clear
+  = text_field_tag 'image'
+  = button_tag 'add image', :id => 'add_image'
+  = button_tag 'clear image', :id => 'clear_image'
+  #colors
+  .clear
+  #images
+  .clear
+  #canvas

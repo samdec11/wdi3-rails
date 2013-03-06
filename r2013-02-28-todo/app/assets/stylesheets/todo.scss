@@ -1,0 +1,50 @@
+/*@import url(http://fonts.googleapis.com/css?family=Patrick+Hand+SC);*/
+
+*, h1, h2, h3, h4, h5, h6 {
+  /*font-family: 'Patrick Hand SC', cursive;*/
+}
+
+ul.nav-bar li a {
+  font-size: 18px !important;
+}
+
+.hide {
+  display: hidden;
+}
+
+.colorbox {
+  height: 20px;
+  width: 20px;
+  border: 1px solid black;
+}
+
+.colorbox:hover {
+  border: 1px solid white;
+}
+
+#priorities div {
+  float: left
+}
+
+#priorities li {
+  list-style: none;
+}
+
+.clear {
+  clear: both;
+}
+
+.priority.color {
+  margin-right: 5px;
+}
+
+#map_canvas {
+  width: 440px;
+  height: 350px;
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+table {
+  border: 1px solid black;
+}

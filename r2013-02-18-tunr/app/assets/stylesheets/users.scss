@@ -1,14 +1,10 @@
 @import 'colors';
+@import url(http://fonts.googleapis.com/css?family=Sonsie+One);
 
 #users {
   img {
     height: auto;
     width: 100px;
-  }
-
-  td {
-    background-color: $cell_color;
-    color: white;
   }
 }
 
@@ -25,4 +21,64 @@
 
 #logo {
   color: #2ba6cb;
+  font-family: 'Sonsie One', cursive;
+  font-size: 32px;
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.front {
+  width: 283px;
+  height: 283px;
+}
+
+table {
+
+  th {
+    font: bold 16px;
+    color: white;
+    line-height: 18px;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #333333;
+    td {
+    color: white !important;
+  }
+    a {
+      color: white;
+    }
+}
+
+  tr:nth-child(even) {
+    background-color: #aaaaaa !important;
+  }
+  a {
+    color: #333333;
+  }
+}
+
+h2 {
+  a {
+    font-size: 14px;
+  }
+}
+
+.show {
+  width: 300px;
+  height: 320px;
+}
+
+.albumshow {
+  float: left;
+  margin-right: 50px;
+}
+
+#slider {
+  img {
+    width: 910px;
+    height: auto;
+  }
 }

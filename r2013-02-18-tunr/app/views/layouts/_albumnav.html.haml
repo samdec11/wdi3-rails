@@ -1,0 +1,8 @@
+%li.has-flyout
+  = link_to('Albums', albums_path)
+  %a.flyout-toggle
+    %span
+  %ul.flyout
+    %li
+      - @auth.albums.each do |album|
+        %li= link_to(album.name, album)

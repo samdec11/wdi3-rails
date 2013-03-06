@@ -1,0 +1,9 @@
+.row
+  .five.columns
+    = render(:partial => 'shared/errors', :locals => {:object => @mixtape})
+    %h1 Mixtape
+    = form_for @mixtape do |f|
+      = f.label :name
+      = f.text_field :name, :autofocus => true
+      = f.submit nil, :class => 'button radius'
+  .seven.columns

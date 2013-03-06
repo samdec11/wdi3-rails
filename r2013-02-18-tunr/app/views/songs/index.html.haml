@@ -1,0 +1,19 @@
+.row
+  .three.columns
+    = button_to('Add New', new_song_path, :method=>:get, :class => 'button radius') if is_admin
+    %table
+      %tr
+        %th Title
+        %th Genre
+        %th Album
+        %th Artist
+      - @songs.each do |song|
+        - if song.name != nil
+          %tr
+            %td= link_to song.name, song
+            %td= link_to song.genres.first.name, genre_path(song.genres.first.id)
+            %td= link_to song.album.name, album_path(song.album.id)
+            %td= link_to song.album.artists.first.name, artist_path(song.album.artists.first.id)
+            - if is_admin
+              %td= link_to 'Edit', edit_song_path(song)
+  .nine.columns

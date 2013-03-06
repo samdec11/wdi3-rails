@@ -1,0 +1,9 @@
+%h1 Flickr
+#bar
+  = text_field_tag 'search', nil, :autofocus => true, :placeholder => 'Search'
+  = text_field_tag 'width', nil, :placeholder => 'Width'
+  = text_field_tag 'height', nil, :placeholder => 'Height'
+  = text_field_tag 'interval', nil, :placeholder => 'Interval'
+  = button_tag 'Search Flickr', :id => 'flickr'
+.clear
+#images
