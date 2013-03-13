@@ -1,0 +1,5 @@
+<% if session[:user_id].present? %>
+  $('#new_subscriber').empty()
+<% else %>
+  $('#new_subscriber').empty().append('<%=j render(:partial => 'form') %>')
+<% end %>
