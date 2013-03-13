@@ -1,0 +1,11 @@
+//= require jquery
+//= require jquery_ujs
+//= require 'foundation/js/vendor/custom.modernizr.js'
+//= require 'foundation/js/vendor/zepto.js'
+//= require 'foundation/js/foundation.min.js'
+//= require 'underscore-min'
+//= require 'morris.js/spec/vendor/raphael-2.1.0.min.js'
+//= require 'morris.js/morris.min.js'
+//= require 'moment.min'
+//= require 'accounting.min.js'
+//= require 'tradr'

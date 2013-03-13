@@ -1,0 +1,3 @@
+- @stocks.each do |stock|
+  = check_box_tag stock.id, nil, nil, :class => 'checkboxes'
+  = label_tag stock.id, stock.symbol.upcase

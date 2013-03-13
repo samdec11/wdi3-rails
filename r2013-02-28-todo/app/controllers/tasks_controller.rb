@@ -16,6 +16,6 @@ class TasksController < ApplicationController
   def destroy
     task = Task.find(params[:id])
     task.delete
-    render :json => 'success'
+    render :json => task
   end
 end

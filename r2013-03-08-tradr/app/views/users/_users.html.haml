@@ -1,0 +1,6 @@
+- @users.each do |user|
+  %tr
+    %td= user.email
+    %td= number_to_currency(user.balance)
+    %td= number_to_currency(user.portfolio)
+    %td= number_to_currency(user.total_value)

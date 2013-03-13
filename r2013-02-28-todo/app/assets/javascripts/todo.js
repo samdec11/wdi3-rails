@@ -1,4 +1,5 @@
 var map;
+var markers = [];
 
 $(function() {
   create_boxes();

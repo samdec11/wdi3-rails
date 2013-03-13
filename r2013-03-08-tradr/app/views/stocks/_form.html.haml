@@ -1,0 +1,14 @@
+.row
+  .small-5.columns
+    = form_for @stock, :remote => true do |f|
+      = f.label :symbol
+      = f.text_field :symbol, :autofocus => true
+      = f.label :quantity
+      = f.text_field :quantity
+      = link_to 'Cancel', '#', :class => 'button radius tiny alert', :id => 'cancel_stock_form'
+      = f.submit nil, :class => 'button radius tiny success'
+  .small-7.columns
+    %br
+    #price
+    %br
+    #total

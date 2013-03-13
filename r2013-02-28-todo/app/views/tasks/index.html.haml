@@ -43,7 +43,6 @@
         %tr.task_row
           %script
             = "tasks.push({id:#{task.id}, title:'#{task.title.gsub("'", "")}', description:'#{task.description.gsub("'", "")}', duedate:'#{task.duedate}', is_complete:'#{task.is_complete}', address:'#{task.address.gsub("'", "")}', priority_id:'#{task.priority.id}', priority_color:'#{task.priority.color}', priority_value:'#{task.priority.value}'});"
-          %script
             = "add_marker(#{task.latitude}, #{task.longitude}, '#{task.title}');"
           %td.title= task.title
           %td.description= task.description

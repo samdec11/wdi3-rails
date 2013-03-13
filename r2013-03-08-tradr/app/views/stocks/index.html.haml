@@ -1,0 +1,7 @@
+.row
+  .small-12
+    %h3= "#{@auth.email}'s stocks"
+    = link_to('Buy stock', new_stock_path, :remote => true, :class => 'button radius tiny success')
+    #new_stock
+    #stocks
+      = render :partial => 'stocks'

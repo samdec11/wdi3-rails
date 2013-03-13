@@ -59,6 +59,8 @@ function change_color(row) {
   }
 }
 
+
+
 function clear_task() {
   show_form();
   $('#create_task').show();
@@ -101,6 +103,7 @@ function clear_task_form() {
 function process_task(task_list) {
   _.each(task_list, add_task_to_array);
   $('tr').first().siblings().empty();
+  clear_markers();
   _.each(tasks, display_task);
 }
 
