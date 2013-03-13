@@ -37,7 +37,7 @@ describe 'Session' do
       visit root_path
       click_link('Login')
       fill_in('Email', :with => user.email)
-      fill_in('Password', :with => 'a')
+      fill_in('Password', :with => 'b')
       click_button('Start Flirting')
       page.should have_button('Start Flirting')
     end
