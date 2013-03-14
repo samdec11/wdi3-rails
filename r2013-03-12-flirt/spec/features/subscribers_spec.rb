@@ -34,7 +34,7 @@ describe 'Subscribers' do
       click_button('Create User')
       page.should_not have_button('Create User')
       page.should have_text('You have successfully created an account!')
-      expect(Subscriber.first.user.username). to eq 'Bob'
+      expect(Subscriber.first.user.username).to eq 'Bob'
     end
   end
 end
