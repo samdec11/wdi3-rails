@@ -1,5 +1,6 @@
 <% if session[:user_id].present? %>
-  $('#form').empty()
+  $('#form').empty();
+  $('nav').empty().append('<%=j render(:partial => 'layouts/nav') %>')
 <% else %>
   $('#form').empty().append('<%=j render(:partial => 'form') %>')
 <% end %>

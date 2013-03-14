@@ -32,8 +32,30 @@ describe 'Session' do
       fill_in('Password', :with => 'a')
       click_button('Start Flirting')
       page.should_not have_button('Start Flirting')
+      page.should have_link('Bob')
+      page.should_not have_link('Register')
+      page.should_not have_link('Login')
+      visit root_path
+      page.should have_link('Bob')
+      page.should_not have_link('Register')
+      page.should_not have_link('Login')
     end
-    it 'logs the user into the system if credentials are incorrect', :js => true do
+    it 'logs the user off the system', :js => true do
+      visit root_path
+      click_link('Login')
+      fill_in('Email', :with => user.email)
+      fill_in('Password', :with => 'a')
+      click_button('Start Flirting')
+      click_link('Bob')
+      page.should_not have_link('Bob')
+      page.should have_link('Register')
+      page.should have_link('Login')
+      visit root_path
+      page.should_not have_link('Bob')
+      page.should have_link('Register')
+      page.should have_link('Login')
+    end
+    it 'does not log the user into the system if credentials are incorrect', :js => true do
       visit root_path
       click_link('Login')
       fill_in('Email', :with => user.email)

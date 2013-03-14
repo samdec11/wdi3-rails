@@ -8,5 +8,10 @@ class SessionController < ApplicationController
     else
       session[:user_id] = nil
     end
+    authentication
+  end
+  def destroy
+    session[:user_id] = nil
+    @auth = nil
   end
 end
