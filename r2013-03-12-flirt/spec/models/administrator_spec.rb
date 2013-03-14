@@ -17,8 +17,12 @@ describe Administrator do
   end
   describe '.create' do
     it 'has an id' do
-      administrator = Administrator.create
+      administrator = Administrator.create(role: 'db')
       expect(administrator.id).to_not be nil
+    end
+    it 'role fails validation when blank' do
+      administrator = Administrator.create
+      expect(administrator.id).to be nil
     end
   end
   describe '#metadata' do

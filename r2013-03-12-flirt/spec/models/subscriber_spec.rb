@@ -17,8 +17,12 @@ describe Subscriber do
   end
   describe '.create' do
     it 'has an id' do
-      subscriber = Subscriber.create
+      subscriber = Subscriber.create(tagline: 'hey', bio: 'my bio', gender: 'female', age: 29)
       expect(subscriber.id).to_not be nil
+    end
+    it 'fails validation if tagline, bio, or gender are not present, or age < 18 years old' do
+      subscriber = Subscriber.create
+      expect(subscriber.id).to be nil
     end
   end
   describe '#metadata' do

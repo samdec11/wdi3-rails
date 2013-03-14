@@ -1,14 +1,50 @@
 <!DOCTYPE html>
-<html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
 <head>
-  <title>R20130312Flirt</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Flirt</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="row">
+    <div class="large-5 columns">
+      <h1>Flirt <%= image_tag 'wink.jpg', :class=>'logo' %></h1>
+    </div>
+    <div class="large-7 columns">
+      <ul class="button-group right">
+        <li><%= link_to 'Register', new_subscriber_path, :remote => true, :class => 'button' %></li>
+        <li><%= link_to 'Login', login_path, :remote=>true, :class => 'button' %></li>
+      </ul>
+    </div>
+  </div>
+  <%= yield %>
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-5 columns">
+          <p>&copy; SMM</p>
+        </div>
+        <div class="large-7 columns">
+          <ul class="inline-list right">
+            <li><a href="#">Section 1</a></li>
+            <li><a href="#">Section 2</a></li>
+            <li><a href="#">Section 3</a></li>
+            <li><a href="#">Section 4</a></li>
+            <li><a href="#">Section 5</a></li>
+            <li><a href="#">Section 6</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    $(document).foundation();
+  </script>
 </body>
 </html>
