@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :authentication
   private
   def authentication
-    @auth = User.find(session[:user_id]) if session[:user_id].present?
+    @auth = (session[:user_id].present?) ? User.find(session[:user_id]) : nil
+    @subscriber = (@auth.present? && @auth.sub.present?) ? @auth.sub : nil
   end
 end

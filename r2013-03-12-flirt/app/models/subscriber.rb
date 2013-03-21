@@ -21,16 +21,25 @@
 #  education       :string(255)
 #  income          :decimal(, )
 #  subscription_id :integer
+#  expires         :date
 #
 
 class Subscriber < ActiveRecord::Base
-  attr_accessible :tagline, :bio, :preferences, :bodytype, :location, :status, :ethnicity, :gender, :age, :occupation, :interests, :political, :religious, :education, :income
+  attr_accessible :tagline, :bio, :preferences, :bodytype, :location, :status, :ethnicity, :gender, :age, :occupation, :interests, :political, :religious, :education, :income, :expires
   has_one :user, :as => :userable
   belongs_to :subscription
   validates :tagline, :bio, :gender, :presence => true
   validates :age, :numericality => [:greater_than_or_equal_to => 18]
 
   def has_subscription?
-    self.subscription.present? ? true : false
+    self.subscription.present?
+  end
+  def purchase_plan(name)
+    plan = Subscription.where(:plan => name).first
+    if plan.present?
+      self.subscription = plan
+      self.expires = Date.current + plan.duration.month
+      self.save
+    end
   end
 end

@@ -1,0 +1,12 @@
+.row
+  .small-12.columns
+    %h1 Home
+.row
+  .small-5.columns
+    = link_to('New Album', new_album_path, :class => 'button round success', :remote => true)
+    #form
+  .small-7.columns
+.row
+  .small-12.columns
+    #albums
+      = render :partial => 'albums'

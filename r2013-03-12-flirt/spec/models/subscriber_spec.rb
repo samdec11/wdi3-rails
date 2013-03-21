@@ -21,67 +21,60 @@
 #  education       :string(255)
 #  income          :decimal(, )
 #  subscription_id :integer
+#  expires         :date
 #
 
 require 'spec_helper'
 
 describe Subscriber do
-  describe '.new' do
-    it 'creates an instance of Subscriber' do
-    subscriber = Subscriber.new
-    expect(subscriber).to be_an_instance_of(Subscriber)
-    end
-  end
-  describe '#user' do
-      it 'has a user' do
-        subscriber = Subscriber.new
-        user = User.new
-        subscriber.user = user
-        expect(subscriber.user).to be_an_instance_of(User)
-    end
-  end
   describe '.create' do
     it 'has an id' do
-      subscriber = Subscriber.create(tagline: 'hey', bio: 'my bio', gender: 'female', age: 29)
+      subscriber = Subscriber.create(tagline: 'hey', bio: 'my bio', gender: 'female', age: 18)
       expect(subscriber.id).to_not be nil
     end
-    it 'fails validation if tagline, bio, or gender are not present, or age < 18 years old' do
+    it 'fails validation if tagline, bio or gender are not present or age < 18 years old' do
       subscriber = Subscriber.create
       expect(subscriber.id).to be nil
     end
   end
-  describe '#has_subscription?' do
-    it 'subscriber has a subscription' do
-      subscriber = Subscriber.create(tagline: 'hey', bio: 'my bio', gender: 'female', age: 29)
-      subscription = Subscription.create
-      subscriber.subscription = subscription
-      subscriber.save
-      expect(subscriber.has_subscription?).to be_true
+
+  context 'the subscriber must be present' do
+    let(:subscriber) {Subscriber.create(tagline: 'hey', bio: 'my bio', gender: 'female', age: 18)}
+
+    describe '#user' do
+      it 'has a user' do
+        user = FactoryGirl.create(:generic_user)
+        subscriber.user = user
+        expect(subscriber.user).to eq user
+      end
     end
-    it 'subscriber does not have a subscription' do
-      subscriber = Subscriber.create(tagline: 'hey', bio: 'my bio', gender: 'female', age: 29)
-      expect(subscriber.has_subscription?).to be_false
+
+    describe '#subscription' do
+      it 'has a subscription' do
+        subscription = FactoryGirl.create(:subscription)
+        subscriber.subscription = subscription
+        expect(subscriber.subscription).to eq subscription
+      end
     end
-  end
-  describe '#metadata' do
-    it 'has subscriber properties' do
-      subscriber = Subscriber.create(tagline: 'hey', bio: 'my bio', preferences: 'a, b, c', bodytype: 'd', location: 'ny', status: 'single', ethnicity: 'human', gender: 'female', age: 29, occupation: 'rails dev', interests: 'a, b, c', political: 'independent', religious: 'i <3 God', education: 'GA', income: 1_000_000)
-      expect(subscriber.id).to_not be nil
-      expect(subscriber.tagline).to eq 'hey'
-      expect(subscriber.bio).to eq 'my bio'
-      expect(subscriber.preferences).to eq 'a, b, c'
-      expect(subscriber.bodytype).to eq 'd'
-      expect(subscriber.location).to eq 'ny'
-      expect(subscriber.status).to eq 'single'
-      expect(subscriber.ethnicity).to eq 'human'
-      expect(subscriber.gender).to eq 'female'
-      expect(subscriber.age).to eq 29
-      expect(subscriber.occupation).to eq 'rails dev'
-      expect(subscriber.interests).to eq 'a, b, c'
-      expect(subscriber.political).to eq 'independent'
-      expect(subscriber.religious).to eq 'i <3 God'
-      expect(subscriber.education).to eq 'GA'
-      expect(subscriber.income).to eq 1_000_000
+
+    describe '#has_subscription?' do
+      it 'has a subscription' do
+        subscription = FactoryGirl.create(:subscription)
+        subscriber.subscription = subscription
+        expect(subscriber.has_subscription?).to be_true
+      end
+      it 'does not have a subscription' do
+        expect(subscriber.has_subscription?).to be_false
+      end
+    end
+
+    describe '#purchase_plan' do
+      it 'purchases a subscription' do
+        subscription = FactoryGirl.create(:subscription)
+        subscriber.purchase_plan(subscription.plan)
+        expect(subscriber.subscription).to eq subscription
+        expect(subscriber.expires).to eq (Date.current + subscription.duration.month)
+      end
     end
   end
 end

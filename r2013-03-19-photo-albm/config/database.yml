@@ -1,0 +1,21 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: r2013-03-19-photo-albm_development
+  pool: 5
+  username: Sean
+  password:
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: r2013-03-19-photo-albm_test
+  pool: 5
+  username: Sean
+  password:
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: r2013-03-19-photo-albm_production
+  pool: 5
+  username: Sean
+  password:
