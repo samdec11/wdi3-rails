@@ -1,0 +1,4 @@
+- if @stories.present?
+  %ol
+    - @stories.each do |story|
+      %li= link_to(story.title, story.url, :target => '_blank')

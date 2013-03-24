@@ -1,0 +1,13 @@
+.row
+  .small-12.columns
+    %h1 Hacking Hacker News
+.row
+  .small-5.columns
+    = form_tag scrape_stories_path, :remote => true do
+      = label_tag :pages
+      = text_field_tag :pages
+      = submit_tag 'Scrape Stories'
+  .small-7.columns
+.row
+  .small-12.columns
+    #stories

@@ -1,0 +1,39 @@
+def fizzbuzz
+  num = gets.chomp.to_i
+  (1..num).each do |x|
+    case x
+    when x % 3 == 0 && x % 5 == 0
+      x = "fizzbuzz"
+    when x % 3 == 0
+      x = "fizz"
+    when x % 5 == 0
+      x = "buzz"
+    else
+      x = x
+    end
+    print x
+  end
+end
+
+def tentimes
+  list = []
+  response = gets.chomp
+  while response != 'q'
+    num = response
+    num.to_i
+    num = num * 10
+    list << num
+  end
+  print list
+end
+
+def min
+  list = [1,2,3,4,5,6,7,8]
+  print list.min
+end
+
+def max
+  list = [1,2,3,4,5,6,7,8]
+  print list.max
+end
+
