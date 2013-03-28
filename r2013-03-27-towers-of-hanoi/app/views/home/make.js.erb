@@ -1,0 +1,12 @@
+var width = 100
+<% nxt = '.next()' %>
+
+$('#forms').empty().append('<%=j render :partial => 'buttons' %>');
+$('#one').empty().append('<%=j render :partial =>'blocks' %>');
+<% (@blocks-1).times do %>
+  $('.block').first()<%= nxt %>.css('width', width + 'px');
+  width = width + 50
+  <% nxt = nxt + '.next()' %>
+<% end %>
+$('#two').css('height', $('#one').css('height'))
+$('#three').css('height', $('#one').css('height'))

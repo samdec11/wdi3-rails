@@ -1,0 +1,4 @@
+= form_tag '/make', :remote => true do
+  = text_field_tag :num, nil, :placeholder => 'Enter number of blocks'
+  = link_to 'Cancel', '#', :class => 'button radius alert small', :id => 'cancel'
+  = submit_tag 'Submit', :class => 'button radius small', :id => 'choose'
