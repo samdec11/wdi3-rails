@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>R20130329Ecommerce</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE']}&sensor=false" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav><%= render :partial => 'layouts/nav' %></nav>
+
+<%= yield %>
+
+</body>
+</html>

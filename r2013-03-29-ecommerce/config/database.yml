@@ -1,0 +1,22 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: r2013-03-29-ecommerce_development
+  pool: 5
+  username: Sean
+  password:
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: r2013-03-29-ecommerce_test
+  pool: 5
+  username: Sean
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: r2013-03-29-ecommerce_production
+  pool: 5
+  username: Sean
+  password:

@@ -1,0 +1,8 @@
+.row
+  .small-5.columns
+    - if @auth.is_admin == true
+      = link_to 'New Product', new_product_path, :remote => true, :class => 'button round small'
+      #form
+.row
+  .small-5.columns
+    = text_field_tag :search, nil, :autofocus => true

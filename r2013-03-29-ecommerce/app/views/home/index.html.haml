@@ -1,0 +1,8 @@
+#index
+  - if @auth.nil?
+    = render :partial => 'anon'
+  - else
+    = render :partial => 'main'
+
+#products
+  = render :partial => 'products/list'

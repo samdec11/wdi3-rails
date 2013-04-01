@@ -1,0 +1,10 @@
+= form_for @product, :html => {:multipart => true}, :remote => true do |f|
+  = f.text_field :name, :placeholder => 'Name'
+  = f.text_area :description, :placeholder => 'Description'
+  = f.label :image, 'Upload Image'
+  = f.file_field :image
+  = f.text_field :cost, :placeholder => 'Cost'
+  = f.text_area :address, :placeholder => 'Address'
+  = text_area_tag :tags, nil, :placeholder => 'Tags'
+  = link_to 'Cancel', '#', :'data-clear-form' => true, :class => 'button round alert tiny'
+  = f.submit 'Add Product', :class => 'button round success tiny'
