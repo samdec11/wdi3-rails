@@ -18,6 +18,10 @@ class ProductsController < ApplicationController
   def search
     query = params[:query]
     @products = Product.where("name @@ :q or description @@ :q or image @@ :q or address @@ :q", :q => query)
+    tags = Tag.where("name @@ :q", :q => query)
+    x = tags.flat_map(&:products)
+    @products += x
+    @products.uniq!
     render :filter
   end
 end

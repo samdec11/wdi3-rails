@@ -29,4 +29,4 @@ window.app =
       url: "/products/search?query=#{input}"
     $.ajax(settings)
 
-$('#document').ready(app.ready)
+$(document).ready(app.ready)
