@@ -6,7 +6,7 @@ class SessionController < ApplicationController
     if user.present? && user.authenticate(params[:password])
       Notifications.login_message(user).deliver
       session[:user_id] = user.id
-      @products = Product.all
+      @products = Product.filtered
     else
       session[:user_id] = nil
     end

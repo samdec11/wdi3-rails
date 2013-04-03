@@ -21,6 +21,8 @@ class Product < ActiveRecord::Base
   has_and_belongs_to_many :tags
   mount_uploader :image, PicUploader
 
+  scope :filtered, where('user_id is null').order(:name)
+
   def tag_list
     self.tags.map(&:name).join(', ')
   end

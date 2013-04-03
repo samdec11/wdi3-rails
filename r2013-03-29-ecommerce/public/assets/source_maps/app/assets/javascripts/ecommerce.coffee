@@ -4,6 +4,7 @@ window.app =
   ready: ->
     $('#form').on('click', 'a[data-clear-form]', app.clear_form)
     $('#index').on('keyup', '#search', app.filter_products)
+    $('body').on('token', '.stripe-button', app.token_generated)
   display_map: (lat, lng, zoom) ->
     mapOptions =
       center: new google.maps.LatLng(lat, lng)
@@ -28,5 +29,8 @@ window.app =
       type: 'get'
       url: "/products/search?query=#{input}"
     $.ajax(settings)
+  token_generated: (e, token) ->
+    e.preventDefault()
+    $(this).siblings('form').append("<input type=hidden name=token value=#{token.id}>").submit()
 
 $(document).ready(app.ready)

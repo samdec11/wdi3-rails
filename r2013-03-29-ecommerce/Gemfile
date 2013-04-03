@@ -11,6 +11,7 @@ gem 'remotipart'
 gem 'geocoder'
 gem 'bcrypt-ruby'
 gem 'aws-ses'
+gem 'stripe'
 
 group :assets do
   gem 'sass-rails'

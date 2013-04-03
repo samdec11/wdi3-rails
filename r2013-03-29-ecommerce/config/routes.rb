@@ -8,5 +8,8 @@ R20130329Ecommerce::Application.routes.draw do
       get 'filter/:tag_id', :action => :filter, :as => :filter
       get 'search'
     end
+    member do
+      post 'purchase'
+    end
   end
 end

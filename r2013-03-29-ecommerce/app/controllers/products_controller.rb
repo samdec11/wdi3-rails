@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
       new_tag = Tag.create(name:tag)
       product.tags << new_tag
     end
-    @products = Product.all
+    @products = Product.filtered
   end
   def filter
     tag = Tag.find(params[:tag_id])
@@ -23,5 +23,22 @@ class ProductsController < ApplicationController
     @products += x
     @products.uniq!
     render :filter
+  end
+  def purchase
+    product = Product.find(params[:id])
+    begin
+      if @auth.customer_id.nil?
+        customer = Stripe::Customer.create(email: @auth.email, card: params[:token])
+        @auth.customer_id = customer.id
+        @auth.save
+      end
+     Stripe::Charge.create(customer: @auth.customer_id, amount: (product.cost * 100).to_i, description: product.name, currency: 'usd')
+    rescue Stripe::CardError => @error
+    end
+    if @error.nil?
+      @auth.products << product
+      Notifications.purchased_product(@auth, product).deliver
+    end
+    @products = Product.filtered
   end
 end

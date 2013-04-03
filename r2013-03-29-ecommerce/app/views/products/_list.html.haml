@@ -15,7 +15,11 @@
           %tr
             %script
               = "app.add_marker(#{product.lat}, #{product.long}, '#{product.name}');"
-            %td= product.name
+            %td
+              - if @auth.customer_id.present?
+                = render :partial => 'products/customer', :locals => {:product => product}
+              - else
+                = render :partial => 'products/anonymous', :locals => {:product => product}
             %td= product.description
             %td= image_tag product.image.thumb.url
             %td= number_to_currency(product.cost)

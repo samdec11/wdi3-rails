@@ -6,9 +6,10 @@
 #  email           :string(255)
 #  password_digest :string(255)
 #  balance         :decimal(, )
-#  is_admin        :boolean
+#  is_admin        :boolean          default(FALSE)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  customer_id     :string(255)
 #
 
 class User < ActiveRecord::Base
