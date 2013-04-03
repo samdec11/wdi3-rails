@@ -1,0 +1,23 @@
+%h1 Don't feel like dancin'
+
+#player
+  = audio_tag(nil, :controls => true)
+
+#graphics
+  %svg
+%table
+  %tr
+    %th Artist
+    %th Album
+    %th Song
+    %th Position
+    %th Image
+  - @artists.each do |artist|
+    - artist.albums.each do |album|
+      - album.songs.each do |song|
+        %tr
+          %td= song.album.artist.name
+          %td= song.album.name
+          %td= link_to song.name, '#', :'data-filename' => song.filename
+          %td= song.position
+          %td= image_tag song.album.image
