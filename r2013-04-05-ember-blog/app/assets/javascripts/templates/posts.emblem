@@ -1,0 +1,8 @@
+.row: .large-12.columns
+    linkTo 'posts.new' class='button tiny' | New Post
+    table: each model: tr
+      td
+        button.button.tiny{action 'delete' this} X
+      td
+        linkTo 'posts.show' this: = title
+    outlet

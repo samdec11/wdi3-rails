@@ -1,0 +1,7 @@
+.row
+  .large-5.columns
+    Ember.TextField valueBinding='title'
+    Ember.TextField valueBinding='author'
+    Ember.TextArea valueBinding='body'
+    button.button.tiny{action 'save'} Save
+  .large-7.columns

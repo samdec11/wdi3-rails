@@ -1,0 +1,9 @@
+.row
+  .large-8.columns
+    h1.subheader Ember waves of grain
+    linkTo 'index' class='button small' | Home
+    linkTo 'about' class='button small' | About
+    linkTo 'faq' class='button small' | FAQ
+    linkTo 'posts' class='button small' | Posts
+  .large-4.columns
+outlet
