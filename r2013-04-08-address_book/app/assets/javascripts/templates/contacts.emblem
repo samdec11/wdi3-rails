@@ -1,0 +1,7 @@
+linkTo 'contacts.new' class='button small success' | New Contact
+table: each model: tr
+  td
+    button.button.tiny{action 'delete' this} X
+  td
+    linkTo 'contacts.show' this: = first
+outlet

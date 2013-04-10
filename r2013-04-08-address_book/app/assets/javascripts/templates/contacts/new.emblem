@@ -1,0 +1,11 @@
+label First
+Ember.TextField valueBinding='first'
+label Last
+Ember.TextField valueBinding='last'
+label DOB
+Ember.TextField valueBinding='dob'
+label Phone
+Ember.TextField valueBinding='phone'
+label Email
+Ember.TextField valueBinding='email'
+button.button.round.tiny.alert{action 'save'} Done

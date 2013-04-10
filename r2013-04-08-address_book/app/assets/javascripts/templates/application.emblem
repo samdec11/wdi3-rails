@@ -1,0 +1,9 @@
+.row
+  .large-12.columns
+    h1.subheader Address Book
+    linkTo 'index' class='button small' | Home
+    linkTo 'about' class='button small' | About
+    linkTo 'faq' class='button small' | FAQ
+    linkTo 'contacts' class='button small' | Contacts
+    .panel
+      outlet

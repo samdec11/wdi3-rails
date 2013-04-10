@@ -1,0 +1,36 @@
+@import url(http://fonts.googleapis.com/css?family=Revalia);
+@import url(http://fonts.googleapis.com/css?family=Cousine:400,700,400italic);
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Revalia', cursive;
+}
+
+* {
+  font-family: 'Cousine', sans-serif;
+}
+
+*, h1, h2, h3, h4, h5, h6 {
+  color: white;
+}
+
+body {
+  background-color: #111;
+  background-image: url('solarsystem.jpg');
+  background-size: cover;
+}
+
+.panel {
+  background-color: #555;
+  opacity: 0.9;
+  p {
+    color: white;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: white;
+  }
+}
+
+.planets {
+  width: 100px;
+  height: 100px;
+}

@@ -1,0 +1,10 @@
+table
+  tr
+    th Planet
+    th Image
+  each model
+    tr
+      td
+        linkTo 'planets.show' this: name
+      td
+        img src=image class='planets'

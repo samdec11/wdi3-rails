@@ -1,0 +1,27 @@
+if isEditing
+  button.button.round.tiny.alert{action 'save'} Done
+  label First
+  Ember.TextField valueBinding='first'
+  label Last
+  Ember.TextField valueBinding='last'
+  label DOB
+  Ember.TextField valueBinding='dob'
+  label Phone
+  Ember.TextField valueBinding='phone'
+  label Email
+  Ember.TextField valueBinding='email'
+else
+  button.button.round.tiny{action 'edit'} Edit
+  table
+    tr
+      th First
+      th Last
+      th DOB
+      th Phone
+      th Email
+    tr
+      td = first
+      td = last
+      td = dob
+      td = phone
+      td = email
