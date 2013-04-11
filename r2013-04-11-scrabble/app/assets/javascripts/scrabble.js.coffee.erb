@@ -4,6 +4,7 @@ window.app =
   ready: ->
     $(document).on('click', '.channel', app.select_channel)
     app.pusher = new Pusher('<%= Pusher.key %>')
+    $(document).on('submit', '#chat_form', app.send_chat)
   select_channel: ->
     if $(this).hasClass('selected')
       $('td').removeClass('selected')
@@ -20,6 +21,21 @@ window.app =
     channel = app.pusher.channels.channels[app.selected_channel]
     channel.bind('chat', app.chat)
   chat: (data) ->
-    console.log(data)
+    $('#chat_window').append("<p>#{data}</p>")
+  send_chat: (e) ->
+    e.preventDefault()
+    if app.selected_channel != null
+      message = $('#message').val()
+      settings =
+        dataType: 'script'
+        type: 'post'
+        url: "/send_message"
+        data: message: message, channel: app.selected_channel
+      $.ajax(settings)
+      $('#message').val('')
+    else
+      $('#chat_form').after('<p>You must choose a channel first!</p>')
+      $('#chat_form + p').fadeOut(3000, -> $('#form + p').remove())
+
 
 $(document).ready(app.ready)

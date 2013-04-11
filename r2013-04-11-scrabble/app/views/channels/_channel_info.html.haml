@@ -7,3 +7,8 @@
         = f.submit 'Add Channel', :class => 'button small success', :id => 'add_channel'
       #channel_list
         = render 'channels/list'
+    .large-7.columns
+      = form_tag '#', :remote => true, :id => 'chat_form' do
+        = text_field_tag :message, nil, :placeholder => 'enter text here'
+        = submit_tag 'Send'
+      #chat_window
