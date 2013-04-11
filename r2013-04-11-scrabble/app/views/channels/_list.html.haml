@@ -1,0 +1,6 @@
+%table#chan
+  %tr
+    %th Channel
+  - @channels.each do |channel|
+    %tr
+      %td.channel= channel.name

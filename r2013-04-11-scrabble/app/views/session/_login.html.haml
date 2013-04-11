@@ -1,0 +1,6 @@
+- if @auth.nil?
+  = form_tag '/login', :remote => true do
+    = text_field_tag :username, nil, :placeholder => 'Username'
+    = submit_tag 'Login', :class => 'button tiny success'
+- else
+  = link_to @auth.username, '/login', :method => :delete, :class => 'button tiny alert', :remote => true

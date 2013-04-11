@@ -1,0 +1,9 @@
+- if @auth.present?
+  .row
+    .large-5.columns
+      = link_to 'Refresh Channels', refresh_channels_path, :class => 'button round tiny', :remote => true
+      = form_for @channel, :remote => true do |f|
+        = f.text_field :name, :placeholder => 'Name'
+        = f.submit 'Add Channel', :class => 'button small success', :id => 'add_channel'
+      #channel_list
+        = render 'channels/list'

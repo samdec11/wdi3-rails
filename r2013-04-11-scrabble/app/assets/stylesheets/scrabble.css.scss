@@ -1,0 +1,51 @@
+@import url(http://fonts.googleapis.com/css?family=Istok+Web:400,700);
+
+* {
+  font-family: 'Istok Web', sans-serif;
+}
+
+#content {
+  background-image: url('scrabble_board.jpg');
+  background-size: cover;
+  min-height: 550px;
+}
+
+#title {
+  font-family: 'ScrambleMixed';
+  font-size: 100px;
+  -webkit-margin-after: 0;
+  margin: 0;
+}
+
+nav h1 {
+  color: white;
+  font-family: 'Istok Web', sans-serif;
+}
+
+
+.selected {
+  background-color: yellow;
+}
+
+td {
+  cursor: pointer;
+}
+
+#login_form {
+  width: 300px;
+}
+
+
+.top-bar-section ul {
+  background-color: #000;
+}
+
+#channel_name, #username {
+  width: 200px;
+  float: left;
+  border-radius: 15px 0 0 15px;
+}
+
+#add_channel, #login_button {
+  border-radius: 0 15px 15px 0;
+}
