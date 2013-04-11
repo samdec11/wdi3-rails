@@ -1,10 +1,15 @@
-h5 = name
+h4 = name
+if isNew
+  render 'satellites/new'
+else
+  button{action newSatellite} class='button small success' New Satellite
 table
   tr
     th Name
     th Image
     th Period
     th Diameter
+    th Radius
     th Distance
   each satellites
     tr
@@ -12,4 +17,5 @@ table
       td: img src=image
       td: period
       td: diameter
+      td: radius
       td: distance

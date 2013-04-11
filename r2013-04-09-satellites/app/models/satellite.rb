@@ -14,6 +14,6 @@
 #
 
 class Satellite < ActiveRecord::Base
-  attr_accessible :name, :image, :distance, :diameter, :period
+  attr_accessible :name, :image, :distance, :diameter, :period, :planet_id
   belongs_to :planet
 end

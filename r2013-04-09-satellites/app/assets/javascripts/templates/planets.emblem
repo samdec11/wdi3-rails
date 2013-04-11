@@ -1,6 +1,7 @@
 h3 Planets
 .row
   .large-6.columns
+    linkTo 'planets.new' class='button small success'| New Planet
     partial 'planets/list'
   .large-6.columns
     outlet

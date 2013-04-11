@@ -1,0 +1,13 @@
+h4 This is a new satellite
+label Name
+Ember.TextField valueBinding='name'
+label Image
+Ember.TextField valueBinding='image'
+label Period
+Ember.TextField valueBinding='period'
+label Diameter
+Ember.TextField valueBinding='diameter'
+label Distance
+Ember.TextField valueBinding='distance'
+button{action save} class='button small' Save
+button{action cancel} class='button small alert' Cancel

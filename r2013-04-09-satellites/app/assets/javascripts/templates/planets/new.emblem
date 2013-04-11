@@ -1,0 +1,7 @@
+h3 New Planet
+label Name
+Ember.TextField valueBinding='name'
+label Image
+Ember.TextField valueBinding='image'
+button{action save} class='button small' Save
+button{action cancel} class='button small alert' Cancel

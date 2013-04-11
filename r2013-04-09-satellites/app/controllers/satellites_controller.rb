@@ -1,5 +1,6 @@
 class SatellitesController < ApplicationController
-  def index
-    render json: {satellites: Satellite.all}
+  def create
+    satellite = Satellite.create(params[:satellite])
+    render json: satellite
   end
 end
