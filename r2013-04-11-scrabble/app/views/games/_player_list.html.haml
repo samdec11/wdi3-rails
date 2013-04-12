@@ -1,0 +1,13 @@
+%h4 Players
+%table#players
+  %tr
+    %th Name
+  - @game.users.each do |user|
+    %tr
+      -if @game.current_player == user.username
+        %td.current_player= user.username
+        #current.hide= user.id
+      -elsif @auth.username == user.username
+        %td.self_player= user.username
+      - else
+        %td= user.username

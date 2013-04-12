@@ -13,4 +13,5 @@
 class User < ActiveRecord::Base
   attr_accessible :username, :is_online, :channel
   validates :username, :uniqueness => true
+  has_and_belongs_to_many :games
 end

@@ -11,12 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411145508) do
+ActiveRecord::Schema.define(:version => 20130412145645) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "games", :force => true do |t|
+    t.string   "name"
+    t.boolean  "is_active",      :default => true
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.string   "current_player"
+  end
+
+  create_table "games_users", :id => false, :force => true do |t|
+    t.integer "game_id"
+    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|

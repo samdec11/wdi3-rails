@@ -5,6 +5,9 @@ window.app =
     $(document).on('click', '.channel', app.select_channel)
     app.pusher = new Pusher('<%= Pusher.key %>')
     $(document).on('submit', '#chat_form', app.send_chat)
+    $(document).on('submit', '#game_form', app.start_game)
+    $(document).on('click', '.letters', app.choose_letter)
+    $(document).on('click', '.boxes', app.move_letter)
   select_channel: ->
     if $(this).hasClass('selected')
       $('td').removeClass('selected')
@@ -20,8 +23,11 @@ window.app =
   bind_events: ->
     channel = app.pusher.channels.channels[app.selected_channel]
     channel.bind('chat', app.chat)
+    channel.bind('join_game', app.join_game)
+    channel.bind('place_letter', app.place_letter)
   chat: (data) ->
     $('#chat_window').append("<p>#{data}</p>")
+    $('#chat_window').scrollTop(500)
   send_chat: (e) ->
     e.preventDefault()
     if app.selected_channel != null
@@ -36,6 +42,50 @@ window.app =
     else
       $('#chat_form').after('<p>You must choose a channel first!</p>')
       $('#chat_form + p').fadeOut(3000, -> $('#form + p').remove())
+  start_game: (e) ->
+    e.preventDefault()
+    if app.selected_channel != null
+      user_id = $('#user_id').val()
+      channel = app.selected_channel
+      settings =
+        dataType: 'script'
+        type: 'post'
+        url:  '/games'
+        data: user_id: user_id, channel: channel
+      $.ajax(settings)
+    else
+      $('#game_form').after('<p>You must choose a channel first!</p>')
+      $('#game_form + p').fadeOut(3000, -> $('#form + p').remove())
+  join_game: (data) ->
+    settings =
+      dataType: 'script'
+      type: "get"
+      url: "/refresh_players/#{app.selected_channel}"
+    $.ajax(settings)
+  choose_letter: ->
+    if $('#current').text() == $('#user_id').val()
+      $('.letters').removeClass('chosen_letter')
+      $(this).addClass('chosen_letter')
+  move_letter: ->
+    letter = $('.chosen_letter').text()
+    box = $(this).attr('id')
+    user_id = $('#user_id').val()
+    token = $('input[name=authenticity_token]').val()
+    if $(this).text() == ""
+      settings =
+        dataType: 'script'
+        type: "post"
+        url: '/games/move'
+        data:
+          authenticity_token: token
+          user_id: user_id
+          letter: letter
+          location: box
+          channel: app.selected_channel
+      $.ajax(settings)
+  place_letter: (data) ->
+    $("##{data.location}").text(data.letter)
+    $('.chosen_letter').remove()
 
 
 $(document).ready(app.ready)

@@ -12,3 +12,15 @@
         = text_field_tag :message, nil, :placeholder => 'enter text here'
         = submit_tag 'Send'
       #chat_window
+  .row
+    .large-12.columns
+      = form_tag '#', :remote => true, :id => 'game_form' do
+        = hidden_field_tag :user_id, @auth.id
+        = submit_tag 'Start Game', :class => 'button success'
+  .row
+    .large-4.columns
+      .panel.hide
+        #player_list
+        #letter_board
+    .large-8.columns
+      #board

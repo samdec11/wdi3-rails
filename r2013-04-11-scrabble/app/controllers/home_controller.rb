@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     @channel = Channel.new
   end
   def send_message
-    Pusher.trigger(params[:channel], 'chat', "#{@auth.username}: #{params[:message]}")
+    Pusher.trigger(params[:channel], 'chat', "#{(Time.now).strftime('%H:%M:%S')} #{@auth.username}: #{params[:message]}")
     render :nothing => true
   end
 end

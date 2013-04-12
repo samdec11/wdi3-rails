@@ -8,4 +8,11 @@ R20130411Scrabble::Application.routes.draw do
       get '/refresh' => 'channels#refresh'
     end
   end
+  resources :games do
+    collection do
+      post '/move' => 'games#move'
+      post '/end_turn' => 'games#end_turn'
+    end
+  end
+  get '/refresh_players/:channel' => 'games#refresh_players'
 end

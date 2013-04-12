@@ -1,0 +1,5 @@
+%table#grid
+  - ("A".."O").to_a.each do |row|
+    %tr
+      - (1..15).to_a.each do |column|
+        %td.boxes{id: "#{row}#{column}"}
