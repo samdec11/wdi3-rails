@@ -28,7 +28,7 @@ class GamesController < ApplicationController
     next_player = @game.users[player_index + 1] || @game.users[0]
     @game.current_player = next_player.username
     @game.save
-    Pusher.trigger(params[:channel], 'join_game', "#{@auth.username}")
+    Pusher.trigger(@game.name, 'join_game', "#{@auth.username}")
     render :refresh_players
   end
 end
